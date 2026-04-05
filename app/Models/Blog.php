@@ -13,4 +13,8 @@ class Blog extends Model
     public function writer(){
        return  $this->belongsTo(Writer::class , 'writerId');
     }
+
+    public function user(){
+        return  $this->belongsTo(User::class , 'userId');
+     }
 }

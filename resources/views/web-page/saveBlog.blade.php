@@ -48,7 +48,7 @@
         </div>
         <div class="logo-bar d-flex justify-content-center align-items-center">
             <a href="{{ route('home') }}"> <img src="{{ asset('build/assets/logo.png') }}" alt=""
-                width="150"></a>
+                    width="150"></a>
         </div>
 
         <div class="social-icons  d-flex justify-content-center align-items-center me-5">
@@ -78,84 +78,123 @@
 
     {{-- Main Section --}}
 
-    <div class="main">
 
-        <div class="hero bg-cover text-light d-flex justify-content-center align-items-center">
-            <h3>Ideas that inspire. Stories that matter.</h3>
+    {{-- <div class="main-blog">
+        <div class="blog-heading d-flex justify-content-between align-items-center mt-5 mb-5 ">
+            <h2 class="ms-5">{{ $blog->title }}</h2>
+            <h6 class="ms-5 me-5 pe-5">{{ $blog->writer->name }}</h6>
+
         </div>
 
-        <div class="blog-heading mt-3 d-flex justify-content-center align-items-center ">
-
-            <h1>_________ OUR BLOGS __________</h1>
+        <div class="blog-excerpt m-5 ">
+            <p> <b>{{ $blog->excerpt }}</b></p>
         </div>
 
-        <div class="blog-cards mt-5 d-grid gap-4 ms-5" style="grid-template-columns: repeat(3, 1fr);">
-
-            @if ($blogs->isNotEmpty())
-
-                @foreach ($blogs as $item)
-                    <a href="{{ route('blog-detail', $item->id) }}" class="text-decoration-none">
-                        <div class="card " style= "width:300px";>
-                            <img src="{{ $item->image }}" class="card-img-top" alt="card-img-top">
-                            <div class="card-body">
-                                <div class="card-title d-flex justify-content-between">
-                                    <h5 class="card-title">{{ $item->title }} </h5>
-                                    <h6>{{ $item->writer->name ?? 'unknown' }} </h6>
-                                </div>
-                                <p class="card-text">{{ $item->excerpt }}</p>
-                                <p class="card-text"><small
-                                        class="text-muted">{{ $item->created_at->diffForHumans() }}</small></p>
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
-
-            @endif
-
-            {{-- <div class="card " style=width:300px;>
-                <img src="{{ asset('build/assets/hero.png') }}" class="card-img-top" alt="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-
-            <div class="card " style=width:300px;>
-                <img src="{{ asset('build/assets/hero.png') }}" class="card-img-top" alt="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-
-            <div class="card" style=width:300px;>
-                <img src="assets/images/bs-images/img-2x1.png" class="card-img-top" alt="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-
-            <div class="card" style=width:300px;>
-                <img src="assets/images/bs-images/img-2x1.png" class="card-img-top" alt="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div> --}}
+        <div class="blog-image d-flex justify-content-center">
+            <img src="{{ $blog->image }}" alt="" height="400" width="60%">
         </div>
 
+        <div class="blog-detail ms-5 me-5 pe-5">
+            <p>{{ $blog->description }}</p>
+        </div>
 
+    </div> --}}
+
+    <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+        <h3>No blogs found.</h3>
+    </div>
+
+    {{-- @if ($saveBlog->isNotEmpty())
+  <div class="main-blog">
+        <div class="blog-heading d-flex justify-content-between align-items-center mt-5 mb-5 ">
+            <h2 class="ms-5">adcsjac</h2>
+            <h6 class="ms-5 me-5 pe-5">iwrenvrv</h6>
+
+        </div>
+
+        <div class="blog-excerpt m-5 ">
+            <p> <b>vnvjkae fcneawrj</b></p>
+        </div>
+
+        <div class="blog-image d-flex justify-content-center">
+            <img src="https://picsum.photos/600/400" alt="" height="400" width="60%">
+        </div>
+
+        <div class="blog-detail ms-5 me-5 pe-5">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, eveniet voluptas consequuntur mollitia accusantium ipsum reprehenderit voluptate quae nobis exercitationem tenetur repellendus, eligendi, corrupti assumenda amet ratione? Distinctio quisquam laboriosam assumenda totam odio maxime reprehenderit accusamus perferendis, nostrum quod, optio magni obcaecati corporis commodi fuga! Quas aliquid fugit possimus saepe!</p>
+        </div>
 
     </div>
+
+    @else
+    <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+        <h3>No blogs found.</h3>
+    </div>
+    @endif --}}
+
+    {{-- <div class="main-blog">
+        <div class="blog-heading d-flex justify-content-between align-items-center mt-5 mb-5 ">
+            <h2 class="ms-5">adcsjac</h2>
+            <h6 class="ms-5 me-5 pe-5">iwrenvrv</h6>
+
+        </div>
+
+        <div class="blog-excerpt m-5 ">
+            <p> <b>vnvjkae fcneawrj</b></p>
+        </div>
+
+        <div class="blog-image d-flex justify-content-center">
+            <img src="https://picsum.photos/600/400" alt="" height="400" width="60%">
+        </div>
+
+        <div class="blog-detail ms-5 me-5 pe-5">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, eveniet voluptas consequuntur mollitia accusantium ipsum reprehenderit voluptate quae nobis exercitationem tenetur repellendus, eligendi, corrupti assumenda amet ratione? Distinctio quisquam laboriosam assumenda totam odio maxime reprehenderit accusamus perferendis, nostrum quod, optio magni obcaecati corporis commodi fuga! Quas aliquid fugit possimus saepe!</p>
+        </div>
+
+        <hr class="mt-5 mb-5">
+    </div>
+
+     <div class="main-blog">
+        <div class="blog-heading d-flex justify-content-between align-items-center mt-5 mb-5 ">
+            <h2 class="ms-5">adcsjac</h2>
+            <h6 class="ms-5 me-5 pe-5">iwrenvrv</h6>
+
+        </div>
+
+        <div class="blog-excerpt m-5 ">
+            <p> <b>vnvjkae fcneawrj</b></p>
+        </div>
+
+        <div class="blog-image d-flex justify-content-center">
+            <img src="https://picsum.photos/600/400" alt="" height="400" width="60%">
+        </div>
+
+        <div class="blog-detail ms-5 me-5 pe-5">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, eveniet voluptas consequuntur mollitia accusantium ipsum reprehenderit voluptate quae nobis exercitationem tenetur repellendus, eligendi, corrupti assumenda amet ratione? Distinctio quisquam laboriosam assumenda totam odio maxime reprehenderit accusamus perferendis, nostrum quod, optio magni obcaecati corporis commodi fuga! Quas aliquid fugit possimus saepe!</p>
+        </div>
+
+    </div>
+     <div class="main-blog">
+        <div class="blog-heading d-flex justify-content-between align-items-center mt-5 mb-5 ">
+            <h2 class="ms-5">adcsjac</h2>
+            <h6 class="ms-5 me-5 pe-5">iwrenvrv</h6>
+
+        </div>
+
+        <div class="blog-excerpt m-5 ">
+            <p> <b>vnvjkae fcneawrj</b></p>
+        </div>
+
+        <div class="blog-image d-flex justify-content-center">
+            <img src="https://picsum.photos/600/400" alt="" height="400" width="60%">
+        </div>
+
+        <div class="blog-detail ms-5 me-5 pe-5">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, eveniet voluptas consequuntur mollitia accusantium ipsum reprehenderit voluptate quae nobis exercitationem tenetur repellendus, eligendi, corrupti assumenda amet ratione? Distinctio quisquam laboriosam assumenda totam odio maxime reprehenderit accusamus perferendis, nostrum quod, optio magni obcaecati corporis commodi fuga! Quas aliquid fugit possimus saepe!</p>
+        </div>
+
+    </div> --}}
+
 
 
     {{-- footer --}}

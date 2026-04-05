@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -7,14 +8,21 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [BlogController::class , 'index'])->name('home');
-Route::get('/blog-detail/{blog}', [BlogController::class , 'blogDetail'])->name('blog-detail');
+Route::get('/blog/{blog}', [BlogController::class , 'blogDetail'])->name('blog-detail');
+Route::get('/save-blog', [BlogController::class , 'save'])->name('save-blog');
+Route::get('/about', [BlogController::class , 'about'])->name('About');
+Route::get('/contact', [BlogController::class , 'contact'])->name('Contact');
 
 
 
+Route::prefix('dashboard')->middleware("auth" , 'verified')->group(function(){
+    Route::get('/', [AdminController::class , 'dashboard'])->name('dashboard');
+    Route::get('/blog', [AdminController::class , 'blog'])->name('dashboard.blog');
+    Route::get('/create-blog', [AdminController::class , 'createBlog'])->name('dashboard.create-blog');
+    Route::post('/create-blog', [AdminController::class , 'storeBlog'])->name('dashboard.store-blog');
+});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
