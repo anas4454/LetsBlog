@@ -25,10 +25,16 @@
     <div class="main d-flex w-100">
         <div class="sidebar bg-dark w-25 h-100 vh-100">
             <ul class="list-unstyled p-4">
-                <li><a href="{{ route('dashboard') }}" class="text-decoration-none text-light d-block p-3 rounded">Dashboard</a></li>
-                <li><a href="{{ route('dashboard.blog') }}" class="text-decoration-none text-light d-block p-3 rounded">Blogs</a></li>
+                <li><a href="{{ route('dashboard') }}"
+                        class="text-decoration-none text-light d-block p-3 rounded">Dashboard</a></li>
+                        <li><a href="{{ route('home') }}"
+                        class="text-decoration-none text-light d-block p-3 rounded">Home</a></li>
+                <li><a href="{{ route('dashboard.blog') }}"
+                        class="text-decoration-none text-light d-block p-3 rounded">Blogs</a></li>
+
                 <li class="mt-0">
-                    <form action="{{ route('logout') }}" method="Post" class="text-decoration-none text-light d-block p-3 rounded">
+                    <form action="{{ route('logout') }}" method="Post"
+                        class="text-decoration-none text-light d-block p-3 rounded">
                         @csrf
                         <button type="submit" class="btn btn-link text-decoration-none text-light p-0">Logout</button>
                     </form>
@@ -37,7 +43,7 @@
         </div>
         <div class="dashboard-content w-75 p-5 overflow-auto">
             <h2 class="mb-4">Create Blog</h2>
-            <form action="{{ route('dashboard.store-blog') }}" method="post">
+            <form action="{{ route('dashboard.store-blog') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>

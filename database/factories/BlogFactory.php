@@ -22,6 +22,7 @@ class BlogFactory extends Factory
            'slug'=> $this->faker->word(),
            'image'=> "https://picsum.photos/seed/blog1/300/200",
            "writerId"=>$this->faker->numberBetween( 0 , 5),
+           "userId"=>$this->faker->numberBetween( 0 , 5),
            'excerpt'=> $this->faker->word(),
            'description'=> $this->faker->paragraphs( 3 ,8)
         ];

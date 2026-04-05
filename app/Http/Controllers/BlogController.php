@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Http\Requests\StoreBlogRequest;
-use App\Http\Requests\UpdateBlogRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -17,7 +16,7 @@ class BlogController extends Controller
 
         // dd($blogs);
 
-        return view('web-page.home' ,compact("blogs"));
+        return view('web-page.home', compact('blogs'));
     }
 
     /**
@@ -25,16 +24,30 @@ class BlogController extends Controller
      */
     public function blogDetail(Blog $blog)
     {
-        return view('web-page.blogDetail' ,compact("blog"));
+        return view('web-page.blogDetail', compact('blog'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function save()
+    public function save($id)
     {
-        $saveBlog = '';
-       return view('web-page.saveBlog' ,compact("saveBlog"));
-    }
 
+        if (! Auth::check()) {
+            return redirect()->route('login');
+        }
+        $user = Auth::user();
+        $blog = Blog::findOrFail($id);
+
+        if ($user->favouriteBlogs()->where('blog_id', $blog->id)->exists()) {
+            $user->favouriteBlogs()->detach($id);
+
+            return redirect()->back()->with('success', 'Blog unsaved');
+        } else {
+            $user->favouriteBlogs()->attach($id);
+
+            return redirect()->back()->with('success', 'Blog saved');
+        }
+
+    }
 }

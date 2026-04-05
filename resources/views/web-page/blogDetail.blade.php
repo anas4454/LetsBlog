@@ -37,11 +37,11 @@
                 <a href="{{ route('home') }}" class="text-decoration-none text-light">
                     <li class="p-2 ">Home</li>
                 </a>
-                <a href="{{ route('About') }}" class="text-decoration-none text-light">
-                    <li class="p-2">About</li>
+                <a href="{{ route('dashboard') }}" class="text-decoration-none text-light">
+                    <li class="p-2">Dashboard</li>
                 </a>
-                <a href="{{ route('Contact') }}" class="text-decoration-none text-light">
-                    <li class="p-2">Contact</li>
+                <a href="{{ route('login') }}" class="text-decoration-none text-dark bg-light ps-4 pe-4 rounded">
+                    <li class="p-2">login</li>
                 </a>
 
             </ul>
@@ -96,7 +96,7 @@
         </div>
 
         <div class="blog-image d-flex justify-content-center">
-            <img src="{{ $blog->image }}" alt="" height="400" width="60%">
+            <img src="{{  asset('storage/' . $blog->image) ?? 'No image available' }}" alt="" height="400" width="60%">
         </div>
 
         <div class="blog-detail ms-5 me-5 pe-5">

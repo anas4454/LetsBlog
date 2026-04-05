@@ -26,6 +26,8 @@
             <ul class="list-unstyled p-4">
                 <li><a href="{{ route('dashboard') }}"
                         class="text-decoration-none text-light d-block p-3 rounded">Dashboard</a></li>
+                        <li><a href="{{ route('home') }}"
+                        class="text-decoration-none text-light d-block p-3 rounded">Home</a></li>
                 <li><a href="{{ route('dashboard.blog') }}"
                         class="text-decoration-none text-light d-block p-3 rounded">Blogs</a></li>
 

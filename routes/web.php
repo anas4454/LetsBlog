@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BlogController::class , 'index'])->name('home');
 Route::get('/blog/{blog}', [BlogController::class , 'blogDetail'])->name('blog-detail');
-Route::get('/save-blog', [BlogController::class , 'save'])->name('save-blog');
-Route::get('/about', [BlogController::class , 'about'])->name('About');
-Route::get('/contact', [BlogController::class , 'contact'])->name('Contact');
+
+Route::get('/blog/{id}/save', [BlogController::class , 'save'])->middleware('auth')->name('save-blog');
+
 
 
 

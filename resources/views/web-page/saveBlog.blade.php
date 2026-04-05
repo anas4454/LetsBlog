@@ -33,15 +33,16 @@
     <div class="header bg-dark d-flex justify-content-between text-light">
         <div class="nav-bar d-flex justify-content-center align-items-center ">
 
-            <ul class=" d-flex justify-content-between list-unstyled ms-5 mt-2 ">
+           <ul class=" d-flex justify-content-between list-unstyled ms-5 mt-2 ">
                 <a href="{{ route('home') }}" class="text-decoration-none text-light">
                     <li class="p-2 ">Home</li>
                 </a>
-                <a href="{{ route('About') }}" class="text-decoration-none text-light">
-                    <li class="p-2">About</li>
+                <a href="{{ route('dashboard') }}" class="text-decoration-none text-light">
+                    <li class="p-2">Dashboard</li>
                 </a>
-                <a href="{{ route('Contact') }}" class="text-decoration-none text-light">
-                    <li class="p-2">Contact</li>
+                <a href="{{ route('login') }}" class="text-decoration-none text-dark bg-light ps-4 pe-4 rounded">
+
+                    <li class="p-2">login</li>
                 </a>
 
             </ul>
