@@ -32,8 +32,5 @@ class User extends Authenticatable
 
     }
 
-    public function favouriteBlogs(){
-        return  $this->hasMany(Blog::class);
-     }
-
+   
 }

@@ -33,7 +33,7 @@
     <div class="header bg-dark d-flex justify-content-between text-light">
         <div class="nav-bar d-flex justify-content-center align-items-center ">
 
-           <ul class=" d-flex justify-content-between list-unstyled ms-5 mt-2 ">
+            <ul class=" d-flex justify-content-between list-unstyled ms-5 mt-2 ">
                 <a href="{{ route('home') }}" class="text-decoration-none text-light">
                     <li class="p-2 ">Home</li>
                 </a>
@@ -68,7 +68,7 @@
                     d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
             </svg>
 
-            <a href="{{ route('save-blog') }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            <a href="{{ route('wishlist') }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     fill="currentColor" class="bi bi-heart  m-3 text-light" viewBox="0 0 16 16">
                     <path
                         d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
@@ -101,37 +101,47 @@
 
     </div> --}}
 
-    <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+    {{-- <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
         <h3>No blogs found.</h3>
-    </div>
+    </div> --}}
 
-    {{-- @if ($saveBlog->isNotEmpty())
-  <div class="main-blog">
-        <div class="blog-heading d-flex justify-content-between align-items-center mt-5 mb-5 ">
-            <h2 class="ms-5">adcsjac</h2>
-            <h6 class="ms-5 me-5 pe-5">iwrenvrv</h6>
+    @if ($saveBlog->isNotEmpty())
 
-        </div>
+        @foreach ($saveBlog as $favourite)
+            <div class="main-blog">
+                <div class="blog-heading d-flex justify-content-between align-items-center mt-5 mb-5 ">
+                    <h2 class="ms-5">{{ $favourite->blog->title }}</h2>
 
-        <div class="blog-excerpt m-5 ">
-            <p> <b>vnvjkae fcneawrj</b></p>
-        </div>
+                    <form action="{{ route('unsave-blog',$favourite->blog->id) }}" method="POST">
+                        @csrf
+                        <button class="btn btn-outline-danger me-5 pe-5">Remove From Favourite</button>
+                    </form>
 
-        <div class="blog-image d-flex justify-content-center">
-            <img src="https://picsum.photos/600/400" alt="" height="400" width="60%">
-        </div>
 
-        <div class="blog-detail ms-5 me-5 pe-5">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, eveniet voluptas consequuntur mollitia accusantium ipsum reprehenderit voluptate quae nobis exercitationem tenetur repellendus, eligendi, corrupti assumenda amet ratione? Distinctio quisquam laboriosam assumenda totam odio maxime reprehenderit accusamus perferendis, nostrum quod, optio magni obcaecati corporis commodi fuga! Quas aliquid fugit possimus saepe!</p>
-        </div>
+                </div>
+                <div class="writer-name">
+                    <h6 class="ms-5 me-5 pe-5">{{ $favourite->blog->writer->name }}</h6>
+                </div>
+                <div class="blog-excerpt m-5 ">
+                    <p> <b>{{ $favourite->blog->excerpt }}</b></p>
+                </div>
 
-    </div>
+                <div class="blog-image d-flex justify-content-center">
+                    <img src="{{ asset('storage/' . $favourite->blog->image) }}" alt="" height="400"
+                        width="60%">
+                </div>
 
+                <div class="blog-detail ms-5 me-5 pe-5">
+                    <p>{{ $favourite->blog->description }}</p>
+                </div>
+
+            </div>
+        @endforeach
     @else
-    <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
-        <h3>No blogs found.</h3>
-    </div>
-    @endif --}}
+        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+            <h3>No blogs found.</h3>
+        </div>
+    @endif
 
     {{-- <div class="main-blog">
         <div class="blog-heading d-flex justify-content-between align-items-center mt-5 mb-5 ">

@@ -16,15 +16,13 @@ class Blog extends Model
         'excerpt',
         'image',
         'description',
-        'writerId',
-        'userId',
+        'writer_id',
+        'user_id',
     ];
 
     public function writer(){
-       return  $this->belongsTo(Writer::class , 'writerId');
+       return  $this->belongsTo(Writer::class , 'writer_id');
     }
 
-    public function user(){
-        return  $this->belongsTo(User::class , 'userId');
-     }
+   
 }

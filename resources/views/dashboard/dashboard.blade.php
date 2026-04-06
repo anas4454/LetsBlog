@@ -47,7 +47,7 @@
                     <div class="card bg-primary text-white">
                         <div class="card-body">
                             <h5 class="card-title">Total Blogs</h5>
-                            <p class="card-text fs-4">24</p>
+                            <p class="card-text fs-4">{{$blogs}}</p>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     <div class="card bg-warning text-white">
                         <div class="card-body">
                             <h5 class="card-title">Favourite Blogs</h5>
-                            <p class="card-text fs-4">89</p>
+                            <p class="card-text fs-4">{{$favourite}}</p>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                     <div class="card bg-danger text-white">
                         <div class="card-body">
                             <h5 class="card-title">Liked Blogs</h5>
-                            <p class="card-text fs-4">156</p>
+                            <p class="card-text fs-4">5</p>
                         </div>
                     </div>
                 </div>

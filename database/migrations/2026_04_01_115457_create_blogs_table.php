@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('image');
-            $table->integer('writerId');
-            $table->integer('userId');
+            $table->integer('writer_id');
+            $table->integer('user_id');
             $table->string('excerpt');
             $table->longText('description');
             $table->timestamps();

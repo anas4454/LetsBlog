@@ -57,7 +57,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $blog->title }}</h5>
                                     <p class="card-text">{{ $blog->excerpt }}</p>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    <form action="{{ route('dashboard.delete-blog' , $blog->id)  }}" method="get" >
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         @endforeach

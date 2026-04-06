@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Favourite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
-    public function dashboard()
+    public function dashboard(Blog $blog)
     {
-        return view('dashboard.dashboard');
+        $blogs = Blog::count();
+        $favourite = Favourite::count();
+        return view('dashboard.dashboard' , compact('blogs' ,'favourite' ));
     }
 
     public function blog()
     {
-        $blogs = Blog::where('userId' , Auth::id())->latest()->get();
+        $blogs = Blog::where('writer_id' , Auth::id())->latest()->get();
         return view('dashboard.blog', compact('blogs'));
     }
 
@@ -45,12 +48,19 @@ class AdminController extends Controller
             'excerpt' => $request->excerpt,
             'image' => $imagepath,
             'description' => $request->description,
-            'writerId'=>Auth::id(),
-            'userId'=>Auth::id(),
+            'writer_id'=>Auth::id(),
+            'user_id'=>Auth::id(),
 
         ]);
 
         return redirect()->route('dashboard.blog')->with('success' , 'Blog created successfully');
+    }
+
+    public function deleteBlog($id){
+
+        Blog::where('id' , $id)->delete();
+
+        return redirect()->route('dashboard.blog')->with('message' , 'you delete your blog');
     }
 
 
