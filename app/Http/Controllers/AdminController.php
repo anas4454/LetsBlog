@@ -34,7 +34,7 @@ class AdminController extends Controller
             'title' => 'required',
             'excerpt' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'description' => 'required',
+            'description' => 'required', 
         ]);
 
         $imagepath = null;
